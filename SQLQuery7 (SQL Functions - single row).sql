@@ -49,7 +49,7 @@ FROM customers;
 
 
 
---String Functions
+--String Extraction Functions
 --LEFT and RIGHT
 -- Extracts the first 3 characters of the first name and the last 3 characters of the country.
 SELECT
