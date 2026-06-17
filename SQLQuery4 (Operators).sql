@@ -113,4 +113,3 @@ select * from dbo.customers where first_name LIKE '__r%';
 
 
 
-select * from customers
