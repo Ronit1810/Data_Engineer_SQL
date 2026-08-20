@@ -23,6 +23,10 @@ This folder contains a collection of SQL practice scripts covering core SQL topi
 - `SQLQuery12 (SQL Case Satement).sql` - `CASE` expressions for conditional logic
 - `SQLQuery13 (Aggregate Function).sql` - aggregate functions: `COUNT`, `SUM`, `AVG`, `MIN`, `MAX`
 - `SQLQuery14 (Window Basics).sql` - window functions, partitions, running totals, and ranking
+- `SQLQuery15 (Window Aggregate function).sql` - aggregate window functions, totals, averages, and rolling calculations
+- `SQLQuery16 (Window Ranking Function).sql` - ranking functions and sales segmentation
+- `SQLQuery17 (Window Value Function).sql` - previous and next row values, first and last values, and metadata queries
+- `SQLQuery18 (Subquery).sql` - subqueries in `FROM`, `SELECT`, `JOIN`, and `WHERE` clauses
 
 ## File summaries
 
@@ -151,6 +155,45 @@ Introduces window functions and ranking:
 - grand totals using `SUM(...) OVER ()`
 - `RANK()` for ranking rows by sales
 - window frame example: `ROWS BETWEEN CURRENT ROW AND 2 FOLLOWING`
+
+### `SQLQuery15 (Window Aggregate function).sql`
+
+Demonstrates aggregate window functions with `Sales.Orders` and `Sales.Employees`:
+
+- `COUNT()` for product order totals, grand totals, and duplicate detection
+- `SUM()` for product totals, grand totals, and percentage-of-total calculations
+- `AVG()` for product averages, overall averages, and comparisons above the average
+- `MIN()` and `MAX()` for product sales ranges and maximum employee salary
+- running and rolling averages using window ordering and frame clauses
+
+### `SQLQuery16 (Window Ranking Function).sql`
+
+Covers window ranking and segmentation techniques:
+
+- `ROW_NUMBER()` for unique row numbering and selecting rows per product
+- `RANK()` and `DENSE_RANK()` for ranking sales values with and without gaps
+- `NTILE()` for dividing orders into sales categories
+- `PERCENT_RANK()` and `CUME_DIST()` for relative ranking and distribution
+- `CASE` expressions to label high, medium, and low sales segments
+
+### `SQLQuery17 (Window Value Function).sql`
+
+Uses value-based window functions for comparing rows:
+
+- `LEAD()` to access sales from following rows
+- `LAG()` to access sales from previous rows
+- month-over-month sales differences and percentage changes
+- `FIRST_VALUE()` and `LAST_VALUE()` to find high and low sales by product
+- `INFORMATION_SCHEMA.COLUMNS` for querying database column metadata
+
+### `SQLQuery18 (Subquery).sql`
+
+Explains subqueries in different parts of a query:
+
+- subqueries in `FROM` to calculate averages and customer totals before filtering or ranking
+- subqueries in `SELECT` to add overall order counts to product results
+- subqueries in `JOIN` to calculate each customer's total order count
+- subqueries in `WHERE` to filter products above the average price
 
 ## How to use
 

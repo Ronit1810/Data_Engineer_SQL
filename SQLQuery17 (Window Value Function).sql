@@ -54,3 +54,39 @@ GROUP by MONTH(orderDate)) t
 The ORDER BY clause specifies the order in which the data will be accessed within each partition, based on the MONTH(orderDate) column.
 The result will include the Month, TotalSales, NextMonthSales, PreviousMonthSales, SalesDifference, and SalesPercentageDifference for each month in the result set.
 */
+
+
+
+
+
+--3. First_Value()
+select
+    [OrderID],
+    [ProductID],
+    [Sales],
+    FIRST_VALUE(Sales) OVER(PARTITION BY(ProductID) ORDER BY(sales) DESC) AS high
+from sales.Orders
+
+
+
+
+
+--4. Last_Value()
+select
+    [OrderID],
+    [ProductID],
+    [Sales],
+    LAST_VALUE(Sales) OVER(PARTITION BY(ProductID) ORDER BY(sales) DESC ROWS BETWEEN CURRENT ROW AND UNBOUNDED FOLLOWING) AS Low
+from sales.Orders
+
+
+
+--INFORMATION_SCHEMA
+Select 
+ *
+from INFORMATION_SCHEMA.COLUMNS
+/*The Information Schema belongs to the System Catalog category of disk storage.
+It’s how the database engine exposes metadata to users in a structured, queryable format.
+*/
+
+
