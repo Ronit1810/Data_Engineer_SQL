@@ -87,3 +87,116 @@ ON c.CustomerID = o.CustomerID
 SELECT * 
 FROM Sales.Products
 WHERE Price > (SELECT AVG(Price) FROM Sales.Products)
+
+
+
+
+
+
+
+
+
+--Subquery in IN operator
+
+--Show the details of order made by customer in Germany.
+SELECT 
+    OrderID,
+    ProductID,
+    CustomerID,
+    Sales
+FROM Sales.Orders
+WHERE CustomerID IN     --Subquery
+    (SELECT
+        CustomerID
+    FROM Sales.Customers
+    WHERE Country = 'Germany')
+
+--Subquery in NOT IN operator
+--Show the details of order Not made by customer in Germany.
+SELECT 
+    OrderID,
+    ProductID,
+    CustomerID,
+    Sales
+FROM Sales.Orders
+WHERE CustomerID NOT IN     --Subquery
+    (SELECT
+        CustomerID
+    FROM Sales.Customers
+    WHERE Country = 'Germany')
+
+
+
+
+
+--Subquery in ANY / ALL Operator
+
+--Find female employees whose salaries are greater than the salaries of any male employees
+SELECT 
+    EmployeeID,
+    FirstName,
+    LastName,
+    Gender,
+    Salary
+FROM Sales.Employees
+WHERE Gender = 'F'
+AND Salary > ANY  --Subquery
+    (SELECT 
+        Salary
+    FROM Sales.Employees
+    WHERE Gender = 'M')
+
+
+
+
+--Find Male employees whose salaries are greater than the salaries of All Female employees
+SELECT 
+    EmployeeID,
+    FirstName,
+    LastName,
+    Gender,
+    Salary
+FROM Sales.Employees
+WHERE Gender = 'M'
+AND Salary > ALL
+    (SELECT 
+        Salary
+    FROM Sales.Employees
+    WHERE Gender = 'F')
+
+
+
+
+
+
+
+
+--Non-Correlated and Correlated SubQuery
+--Show all customer details and find the total orders of each customer (Same example in Join Subquery)
+
+SELECT
+    *,
+    (SELECT COUNT(*) FROM Sales.Orders) AS Total_Order,  --Non-Correlated SubQuery
+    (SELECT COUNT(*) FROM Sales.Orders AS o WHERE o.CustomerID = c.CustomerID) AS Total_Order_Customer  --Correlated SubQuery
+FROM Sales.Customers AS c
+
+
+
+
+
+
+
+
+
+
+--Correlated Subquery in `WHERE` Clause :- EXISTS Operator:
+
+--Show the details of order made by customer in Germany. (Same example as IN Operator Subquery)
+SELECT 
+    *
+FROM Sales.Orders AS O
+WHERE EXISTS
+    (SELECT *
+    FROM Sales.Customers AS C
+    WHERE Country = 'Germany'
+    AND  O.CustomerID = C.CustomerID)
