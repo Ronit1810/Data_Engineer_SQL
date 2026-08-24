@@ -9,6 +9,8 @@ This folder contains a collection of SQL practice scripts covering core SQL topi
 ## Folder structure
 
 - `README.md` - this file
+- `init-sqlserver-mydatabase.sql` - creates and seeds the `MyDatabase` practice database
+- `init-sqlserver-salesdb.sql` - creates and seeds the `SalesDB` practice database and `Sales` schema
 - `SQLQuery1.sql` - GROUP BY, HAVING, ORDER BY, TOP
 - `SQLQuery2 (DDL).sql` - DDL examples: CREATE, ALTER, DROP
 - `SQLQuery3 (DML).sql` - DML examples: INSERT, UPDATE, DELETE, TRUNCATE
@@ -29,6 +31,27 @@ This folder contains a collection of SQL practice scripts covering core SQL topi
 - `SQLQuery18 (Subquery).sql` - subqueries in `FROM`, `SELECT`, `JOIN`, and `WHERE` clauses
 
 ## File summaries
+
+### `init-sqlserver-mydatabase.sql`
+
+Creates a small `MyDatabase` sample database for the introductory query scripts:
+
+- drops and recreates `MyDatabase` for a clean practice environment
+- creates `customers` and `orders` tables with primary keys
+- inserts sample customer, order, date, and sales data
+- provides the tables used by `SQLQuery1.sql` and other basic examples
+- includes a destructive reset warning because existing database data is permanently deleted
+
+### `init-sqlserver-salesdb.sql`
+
+Creates a complete `SalesDB` sample database for the advanced query scripts:
+
+- drops and recreates `SalesDB` and resets the `Sales` schema
+- creates `Sales.Customers`, `Sales.Employees`, `Sales.Products`, and `Sales.Orders`
+- creates `Sales.OrdersArchive` for archive, duplicate, and set-operation examples
+- inserts sample customers, employees, products, current orders, and archived orders
+- supports joins, functions, aggregate queries, window functions, and subqueries
+- includes a destructive reset warning because existing database data is permanently deleted
 
 ### `SQLQuery1.sql`
 
