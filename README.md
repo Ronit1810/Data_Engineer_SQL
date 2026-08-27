@@ -6,6 +6,8 @@ This folder contains a collection of SQL practice scripts covering core SQL topi
 
 > Notion doc: https://app.notion.com/p/SQL-1-d4ab691ce5c2822287e4813abc818a94?source=copy_link
 
+> YouTube link: https://youtu.be/SSKVgrwhzus?si=0mITsE0xTQa4mCTn
+
 ## Folder structure
 
 - `README.md` - this file
@@ -29,6 +31,8 @@ This folder contains a collection of SQL practice scripts covering core SQL topi
 - `SQLQuery16 (Window Ranking Function).sql` - ranking functions and sales segmentation
 - `SQLQuery17 (Window Value Function).sql` - previous and next row values, first and last values, and metadata queries
 - `SQLQuery18 (Subquery).sql` - subqueries in `FROM`, `SELECT`, `JOIN`, and `WHERE` clauses
+- `SQLQuery19 (CTE).sql` - common table expressions, recursive sequences, and employee hierarchies
+- `SQLQuery20 (Views).sql` - summary and detail views with running totals
 
 ## File summaries
 
@@ -217,6 +221,24 @@ Explains subqueries in different parts of a query:
 - subqueries in `SELECT` to add overall order counts to product results
 - subqueries in `JOIN` to calculate each customer's total order count
 - subqueries in `WHERE` to filter products above the average price
+
+### `SQLQuery19 (CTE).sql`
+
+Demonstrates common table expressions for organizing multi-step queries:
+
+- multiple CTEs for customer sales totals, last order dates, rankings, and segments
+- joining CTE results to customer details
+- recursive CTEs for generating number sequences
+- recursive employee hierarchy queries with levels and profiles
+
+### `SQLQuery20 (Views).sql`
+
+Shows how views can package reusable query logic:
+
+- monthly sales summaries with order and quantity counts
+- querying a view to calculate a running sales total
+- creating an order detail view by combining orders, products, customers, and employees
+- querying the detail view as a reusable table-like object
 
 ## How to use
 
